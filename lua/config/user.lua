@@ -5,7 +5,6 @@ vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 
-vim.cmd.colorscheme("catppuccin-mocha")
 vim.opt.nu = true
 vim.opt.relativenumber = true
 vim.opt.tabstop = 4
