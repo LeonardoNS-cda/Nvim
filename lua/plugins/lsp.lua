@@ -1,6 +1,23 @@
 local config = function()
     local capab = require("blink.cmp").get_lsp_capabilities()
-    require("lspconfig").lua_ls.setup { capabilities = capab }
+    require("lspconfig").lua_ls.setup {
+        capabilities = capab,
+        settings = {
+            Lua = {
+                runtime = {
+                    version = "LuaJit"
+                },
+                diagnostics = {
+                    globals = {"vim"},
+                },
+                workspace = {
+                    library = {
+                        vim.env.VIMRUNTIME,
+                    }
+                }
+            }
+        }
+    }
     require("mason").setup({
         ui = {
             icons = {
@@ -23,6 +40,7 @@ return {
     "neovim/nvim-lspconfig",
     dependencies = {
         "saghen/blink.cmp",
+        "rafamadriz/friendly-snippets",
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
         "hrsh7th/nvim-cmp",
